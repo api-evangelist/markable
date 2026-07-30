@@ -1,8 +1,25 @@
 aid: markable
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source: []
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/markable.png
 name: Markable
-description: 'Markable is a company surfaced as a portfolio company of partech and added to the API Evangelist
-  network as a stub for enrichment. Sector: Marketplace. This profile is a lead awaiting the enrichment
-  pipeline.'
+description: 'Markable (markable.ai) is an all-in-one monetization platform for affiliate
+  creators and social-commerce influencers. It turns social posts into revenue with
+  smart affiliate deeplinks across Amazon, Target, and Walmart, a shop-in-bio storefront,
+  storefront sync for product collections, Instagram auto-DM replies, AI-generated
+  collages and captions, viral-product discovery, and performance analytics. It is
+  offered as an iOS app and a desktop web app, with a creator performance/boosting
+  program. Markable is backed by Partech. No public developer API surface is currently
+  published.'
 url: https://raw.githubusercontent.com/api-evangelist/markable/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -12,10 +29,15 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
-- Marketplace
+- Creator Economy
+- Affiliate Marketing
+- Social Commerce
+- Influencer Marketing
+- Content Monetization
+- Social Media
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -23,5 +45,24 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/markable-domain-security.yml
 - type: Website
   url: https://www.markable.ai/
+- type: Pricing
+  url: https://www.markable.ai/pricing
+- type: Blog
+  url: https://www.markable.ai/blog
+- type: Support
+  url: https://intercom.help/markable-ai/en
+- type: SignUp
+  url: https://app-prod.markable.ai/
+- type: TermsOfService
+  url: https://www.markable.ai/terms-of-service
+- type: PrivacyPolicy
+  url: https://www.markable.ai/privacy
+x-enrichment:
+  date: '2026-07-20'
+  status: minimal
+  artifacts_added: 2
+  pass: local-v1
