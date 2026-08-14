@@ -1,15 +1,17 @@
 aid: markable
 accessModel:
-  pricing: unknown
-  onboarding: unknown
+  pricing: freemium
+  onboarding: manual
   trial: false
   try_now: false
   public: false
-  label: Unknown
-  confidence: low
-  source: []
-  generated: '2026-07-22'
-  method: derived
+  label: Gated
+  confidence: medium
+  source:
+  - https://www.markable.ai/pricing
+  - https://docs-dev.markable.ai/#getting-started
+  generated: '2026-08-13'
+  method: searched
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/markable.png
 name: Markable
 description: 'Markable (markable.ai) is an all-in-one monetization platform for affiliate
@@ -18,8 +20,12 @@ description: 'Markable (markable.ai) is an all-in-one monetization platform for 
   storefront sync for product collections, Instagram auto-DM replies, AI-generated
   collages and captions, viral-product discovery, and performance analytics. It is
   offered as an iOS app and a desktop web app, with a creator performance/boosting
-  program. Markable is backed by Partech. No public developer API surface is currently
-  published.'
+  program. Markable is backed by Partech. Markable also published an earlier developer
+  product, the Markable Lens API — a visual search platform for finding products and
+  styles inside images and video against indexed catalogs — whose reference is still
+  publicly served at docs-dev.markable.ai. Access to that API is gated on manual
+  developer verification, no machine-readable contract (OpenAPI/AsyncAPI/GraphQL/MCP)
+  is published, and the API hosts it documents were not reachable when last probed.'
 url: https://raw.githubusercontent.com/api-evangelist/markable/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -29,7 +35,7 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-20'
+modified: '2026-08-13'
 tags:
 - Company
 - Creator Economy
@@ -38,7 +44,38 @@ tags:
 - Influencer Marketing
 - Content Monetization
 - Social Media
-apis: []
+- Visual Search
+- Computer Vision
+- Product Discovery
+- Image Recognition
+- Video Search
+apis:
+- name: Markable Lens API
+  description: 'Markable''s visual search platform API. Index catalogs of products or
+    styles, then search for visually similar items inside images and video. Covers
+    catalog and catalog-item management, product search, "how to wear it" style search,
+    video search, and a category/attribute taxonomy. Authentication is a two-stage
+    bearer-token exchange (user access token, then client access token). Access requires
+    manual developer verification by Markable; no OpenAPI is published. The reference
+    is live and public, but the documented runtime hosts were unreachable when probed
+    on 2026-08-13 — see lifecycle/markable-lifecycle.yml.'
+  humanURL: https://docs-dev.markable.ai/
+  baseURL: https://catalog.markable.ai
+  tags:
+  - Visual Search
+  - Computer Vision
+  - Image Recognition
+  - Video Search
+  - Product Discovery
+  x-status: documented-runtime-unreachable
+  x-status-checked: '2026-08-13'
+  x-additional-hosts:
+  - host: https://auth.markable.ai
+    role: user and client token issuance
+    reachable: false
+  - host: https://video.markable.ai
+    role: video search
+    reachable: false
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -49,20 +86,44 @@ common:
   url: security/markable-domain-security.yml
 - type: Website
   url: https://www.markable.ai/
+- type: Documentation
+  url: https://docs-dev.markable.ai/
+- type: APIReference
+  url: https://docs-dev.markable.ai/
+- type: GettingStarted
+  url: https://docs-dev.markable.ai/#getting-started
+- type: GitHubOrganization
+  url: https://github.com/markable-dev
 - type: Pricing
   url: https://www.markable.ai/pricing
-- type: Blog
-  url: https://www.markable.ai/blog
 - type: Support
   url: https://intercom.help/markable-ai/en
 - type: SignUp
   url: https://app-prod.markable.ai/
-- type: TermsOfService
-  url: https://www.markable.ai/terms-of-service
 - type: PrivacyPolicy
   url: https://www.markable.ai/privacy
+- type: Authentication
+  url: authentication/markable-authentication.yml
+- type: RateLimits
+  url: rate-limits/markable-rate-limits.yml
+- type: ErrorCatalog
+  url: errors/markable-problem-types.yml
+- type: Conventions
+  url: conventions/markable-conventions.yml
+- type: Lifecycle
+  url: lifecycle/markable-lifecycle.yml
+- type: Plans
+  url: plans/markable-plans-pricing.yml
+- type: Packages
+  url: packages/markable-packages.yml
+- type: DataModel
+  url: data-model/markable-data-model.yml
+- type: Conformance
+  url: conformance/markable-conformance.yml
+- type: LLMsTxt
+  url: llms/markable-llms.txt
 x-enrichment:
-  date: '2026-07-20'
-  status: minimal
-  artifacts_added: 2
+  date: '2026-08-13'
+  status: enriched
+  artifacts_added: 10
   pass: local-v1
