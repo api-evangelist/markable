@@ -1,0 +1,86 @@
+generated: '2026-08-13'
+method: searched
+source: https://docs-dev.markable.ai/#errors
+format: jsonapi
+format_note: >-
+  Markable does NOT use RFC 9457 application/problem+json. The docs state a failed request
+  returns a list of error objects "according to the JSON API Specification"
+  (http://jsonapi.org/format/#errors), returned as a top-level `errors` array.
+envelope:
+  field: errors
+  cardinality: array
+  members:
+  - name: title
+    description: Short, human-readable summary of the problem, stable across occurrences
+      except for localization.
+  - name: id
+    description: Unique identifier for this particular occurrence of the problem.
+  - name: status
+    description: The HTTP status code applicable to this problem.
+  - name: code
+    description: Application-specific error code.
+  - name: detail
+    description: Human-readable explanation specific to this occurrence.
+  - name: links
+    description: A links object.
+  - name: source
+    description: References to the source of the error.
+  - name: meta
+    description: Non-standard information — Markable populates `timestamp` (epoch ms) and
+      `datetime` (ISO 8601).
+  example: |
+    {
+      "errors": [
+        {
+          "title": "Unauthorized",
+          "id": "3f649f325620e5ddfa66f98c3945a7f7",
+          "status": 401,
+          "code": 401,
+          "detail": "Authentication Error",
+          "meta": {"timestamp": 1551820965551, "datetime": "2019-03-05T21:22:45.551Z"}
+        }
+      ]
+    }
+problems:
+- status: 400
+  title: Bad Request
+  detail: The request format or JSON is invalid.
+- status: 401
+  title: Unauthorized
+  detail: The API key is wrong.
+- status: 403
+  title: Forbidden
+  detail: The specified resource is hidden for admins only.
+- status: 404
+  title: Not Found
+  detail: The specified resource could not be found.
+- status: 405
+  title: Method Not Allowed
+  detail: The request method is invalid for the specified resource.
+- status: 408
+  title: Timeout
+  detail: The request has timed out.
+- status: 409
+  title: Conflict Error
+  detail: Duplicate resource prohibited.
+- status: 413
+  title: Entity Too Large
+  detail: The request exceeds size limit.
+- status: 422
+  title: Validation Error
+  detail: The request fails schema specifications.
+- status: 429
+  title: Too Many Requests
+  detail: You have reached your request per minute limit.
+- status: 500
+  title: Internal Server Error
+  detail: We had a problem with our server. Please try again later.
+- status: 503
+  title: Service Unavailable
+  detail: Temporarily offline for maintenance. Please try again later.
+notes:
+- Every entry above is published verbatim in the Markable Lens API error reference; none were
+  derived from an OpenAPI (Markable publishes no OpenAPI).
+- The docs give no per-operation error mapping and no application-specific `code` registry
+  distinct from the HTTP status, so `code` is documented but effectively mirrors `status` in
+  the published example.

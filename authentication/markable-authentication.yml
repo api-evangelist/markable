@@ -1,0 +1,56 @@
+generated: '2026-08-13'
+method: searched
+source: https://docs-dev.markable.ai/
+docs: https://docs-dev.markable.ai/#authentication
+note: >-
+  Derived from the live, first-party Markable Lens API reference (Slate site served at
+  https://docs-dev.markable.ai/, source at https://github.com/markable-dev/markable-api-docs,
+  a GitHub organization whose website field is https://markable.ai). Markable publishes no
+  OpenAPI, so this profile is read from the published documentation rather than
+  securitySchemes. The authorization host (auth.markable.ai) does not currently resolve in
+  DNS — see lifecycle/markable-lifecycle.yml.
+summary:
+  types:
+  - http
+  api_key_in: []
+  oauth2_flows: []
+  model: two-stage bearer tokens (user access token, then client access token)
+  onboarding: manual — developer signup + verification by Markable, credentials issued by
+    the vendor
+schemes:
+- name: userAccessToken
+  type: http
+  scheme: bearer
+  bearer_format: opaque access token
+  in: header
+  header: Authorization
+  value_form: 'Bearer :user_access_token'
+  issued_by: POST https://auth.markable.ai/auth/user/authorize
+  credentials: email + password, submitted inside a `data` envelope
+  used_for: retrieving the user record and its default client (GET https://auth.markable.ai/auth/users)
+  expires: token response carries `expires_at`
+  source: https://docs-dev.markable.ai/#user-authentication
+- name: clientAccessToken
+  type: http
+  scheme: bearer
+  bearer_format: opaque access token
+  in: header
+  header: Authorization
+  value_form: 'Bearer :client_access_token'
+  issued_by: POST https://auth.markable.ai/auth/client/authorize
+  credentials: client_id + client_secret from the default client on the user record
+  used_for: every Lens API call — catalog, catalog items, image search, style search, video
+    search, taxonomy
+  source: https://docs-dev.markable.ai/#client-authentication
+references:
+- rfc: RFC 6750
+  what: the docs cite HTTP Bearer Token (RFC 6750) as the authorization format
+notes:
+- No OAuth 2.0 authorization-code/client-credentials discovery documents are published
+  (/.well-known/oauth-authorization-server and /.well-known/openid-configuration 404 on every
+  Markable host probed 2026-08-13); the client_id/client_secret exchange is a vendor-specific
+  endpoint, not RFC 6749 client_credentials.
+- There is no scope surface documented, so scopes/ is intentionally absent. The docs state
+  "scopes are a concern of tokens and not clients".
+- The consumer creator-monetization product at app-prod.markable.ai is a separate, unrelated
+  surface with no documented developer authentication.

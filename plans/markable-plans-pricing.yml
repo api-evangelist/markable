@@ -1,0 +1,87 @@
+generated: '2026-08-13'
+method: searched
+source: https://www.markable.ai/pricing
+currency: USD
+billing_period: month
+plan_count: 5
+note: >-
+  These are the plans for Markable's consumer creator-monetization product. Markable publishes
+  no API/developer pricing: the Markable Lens API reference states access requires being a
+  verified developer with credentials issued by Markable, with no published price.
+plans:
+- name: Starter
+  price: 0
+  currency: USD
+  period: month
+  included:
+  - Unlimited deeplinks
+  - 2,000 Auto DMs
+  - 5 AI collages
+  - 10 AI captions
+  refresh: monthly
+  overage: null
+- name: Grow
+  price: 20
+  currency: USD
+  period: month
+  included:
+  - Unlimited deeplinks
+  - Unlimited Auto DMs
+  - 20 AI collages
+  - Product recommendations
+  - Creator connections
+  refresh: monthly
+  overage: null
+- name: Pro
+  price: 99
+  currency: USD
+  period: month
+  highlighted: true
+  highlight_label: Best Value
+  included:
+  - Unlimited deeplinks
+  - Unlimited Auto DMs
+  - 100 AI collages
+  - Unlimited AI captions
+  - Product recommendations
+  - Creator connections
+  refresh: monthly
+  overage: null
+- name: VIP
+  price: 499
+  currency: USD
+  period: month
+  included:
+  - Unlimited deeplinks
+  - Unlimited Auto DMs
+  - Unlimited AI collages
+  - Unlimited AI captions
+  - Product recommendations
+  - Creator connections
+  - Boosting Special Plan — access to apply
+  refresh: monthly
+  overage: null
+- name: Boosting Special
+  price: 199.99
+  list_price: 499
+  currency: USD
+  period: month
+  included:
+  - Unlimited deeplinks
+  - Up to $500k content boost funding monthly
+  - 1:1 designated success rep
+  - Unlimited Auto DMs
+  - Unlimited AI collages
+  - Unlimited AI captions
+  - Unlimited product recommendations
+  - Creator connections
+  overage: null
+trial:
+  offered: false
+  note: no free trial period is advertised; the Starter tier is free
+api_pricing:
+  published: false
+  note: 'Lens API access is gated on manual developer verification — "To be able to use/access
+    this API you will need to be a verified developer, please contact us to get started." No
+    metered or tiered API price is published.'
+  source: https://docs-dev.markable.ai/#getting-started

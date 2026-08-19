@@ -1,12 +1,56 @@
-generated: '2026-07-20'
-method: searched
-source: live probes of https://www.markable.ai/.well-known/*
-host: https://www.markable.ai
-documents:
-- path: /.well-known/security.txt
-  status: 404
-- path: /.well-known/openid-configuration
-  status: 404
-notes: No /.well-known/ discovery documents are published. Markable is a consumer
-  creator-monetization SaaS with no public API surface, so no OIDC/OAuth/security.txt
-  catalog is exposed. Recorded as honest negative probe data; no WellKnown pointer wired.
+generated: '2026-08-13'
+method: probed
+source: live probes of /.well-known/* on every Markable host (2026-08-13)
+hosts:
+- host: https://www.markable.ai
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/oauth-protected-resource, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+- host: https://docs-dev.markable.ai
+  note: live Markable Lens API documentation host (GitHub Pages)
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/oauth-protected-resource, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+- host: https://app-prod.markable.ai
+  note: consumer application host; every /.well-known/* path is refused at the edge
+  documents:
+  - {path: /.well-known/security.txt, status: 403}
+  - {path: /.well-known/openid-configuration, status: 403}
+  - {path: /.well-known/oauth-authorization-server, status: 403}
+  - {path: /.well-known/oauth-protected-resource, status: 403}
+  - {path: /.well-known/api-catalog, status: 403}
+  - {path: /.well-known/ai-plugin.json, status: 403}
+  - {path: /.well-known/agent-card.json, status: 403}
+  - {path: /.well-known/agent.json, status: 403}
+- host: https://catalog.markable.ai
+  note: documented Lens API host; unrouted Kubernetes ingress serving nginx 404s behind a
+    default self-signed certificate
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/oauth-protected-resource, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+unreachable_hosts:
+- {host: auth.markable.ai, finding: DNS does not resolve}
+- {host: video.markable.ai, finding: DNS does not resolve}
+- {host: api.markable.ai, finding: DNS does not resolve}
+notes: >-
+  No /.well-known/ discovery document is published anywhere on the Markable estate. Recorded as
+  honest negative probe data — no WellKnown, SecurityTxt or AgentCard pointer is wired in
+  apis.yml, because every probed path returned a 404 or 403 and none returned a document.

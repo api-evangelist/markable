@@ -1,0 +1,46 @@
+generated: '2026-08-13'
+method: searched
+source: https://docs-dev.markable.ai/#rate-limits
+limit_count: 1
+rate_limits:
+- scope: per-client
+  window: 1m
+  limit: 25
+  unit: requests
+  burst: null
+  applies_to: search results per minute, per client
+  quote: 'For have fair usage of our APIs, we have enforced rate limits to the number of
+    search results one can perform per minute. For each client, the current limit is 25
+    requests/minute.'
+  increase: 'documented as negotiable — "Depending on your use case, you can get in touch to
+    have your limits increased."'
+  source: https://docs-dev.markable.ai/#rate-limits
+response_signaling:
+  headers: []
+  headers_note: >-
+    Markable documents no rate-limit response headers (no X-RateLimit-*, no RateLimit-*, no
+    Retry-After). An agent cannot read remaining quota from a response; it can only observe the
+    exhaustion status code.
+  exhaustion_status: 429
+  exhaustion_body: 'JSON:API error object array — {"errors":[{"title":"Too Many Requests",
+    "status":429,...}]}'
+  exhaustion_source: https://docs-dev.markable.ai/#http-error-codes
+payload_limits:
+- surface: image search input
+  constraints:
+  - 'accepted formats: .jpg, .jpeg, .png'
+  - 'minimum image dimension: 100 px'
+  - 'maximum image dimension: 6000 px'
+  - 'maximum image size: 10485760 bytes (10 MiB)'
+  - 'min/max image aspect ratio: 0.4 to 2.5'
+  source: https://docs-dev.markable.ai/#search-constraints
+notes:
+- >-
+  Published limits could not be observed on a live response — the documented API hosts are not
+  currently serving (auth.markable.ai and video.markable.ai do not resolve; catalog.markable.ai
+  answers 404 from an unrouted Kubernetes ingress with a default self-signed certificate,
+  probed 2026-08-13). Values here are the vendor's published numbers, not observed ones.
+- >-
+  The consumer plans at https://www.markable.ai/pricing carry product quotas (Auto DMs, AI
+  collages, AI captions) rather than API rate limits; those are recorded in
+  plans/markable-plans-pricing.yml.

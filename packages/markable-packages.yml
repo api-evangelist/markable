@@ -1,0 +1,36 @@
+generated: '2026-08-13'
+method: searched
+source: registry.npmjs.org, pypi.org, github.com/markable-dev
+sdk_count: 0
+note: >-
+  No first-party Markable client library exists on any public registry. npm and PyPI searches
+  for "markable" return only unrelated third-party packages (a Markdown utility, a feedback
+  layer, a pull-stream), and the Markable Lens API documentation ships raw HTTP/curl examples
+  only — the Python samples in the docs source are commented out and use `requests` directly.
+  No `SDKs` pointer is wired in apis.yml because there is no client library to point at.
+packages:
+- language: javascript
+  registry: npm
+  name: watchmen-ping-http-post-markable
+  url: https://www.npmjs.com/package/watchmen-ping-http-post-markable
+  install: npm install watchmen-ping-http-post-markable
+  official: true
+  official_evidence: published from https://github.com/markable-dev/watchmen-ping-http-post-markable,
+    the Markable.ai GitHub organization (org website field is https://markable.ai)
+  kind: internal-tooling
+  api_client: false
+  description: HTTP ping service plugin for the watchmen monitoring tool — an operations
+    utility, not a Markable API client.
+  version: 0.0.4
+  published: '2017-03-17'
+searched_registries:
+- registry: npm
+  query: markable / @markable/sdk / markable-lens / markable-api
+  result: no first-party client library
+- registry: pypi
+  query: markable / markable-ai / markable-lens
+  result: 'markable exists but is unrelated third-party; markable-ai and markable-lens: 404'
+- registry: github
+  query: github.com/markable-dev (8 public repos)
+  result: docs site, forks of log4j2/helm-push/cert-manager-webhook, CI actions and internal
+    devops tooling — no client SDK

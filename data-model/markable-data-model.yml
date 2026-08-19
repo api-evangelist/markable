@@ -1,0 +1,100 @@
+generated: '2026-08-13'
+method: searched
+source: https://docs-dev.markable.ai/#objects
+note: >-
+  Entity graph read from the published Markable Lens API object reference (the documented JSON
+  Schema fragments and response examples), not derived from an OpenAPI — Markable publishes
+  none. Only entities and reference fields that appear verbatim in the docs are recorded.
+type_discriminator: _type
+primary_key: _id
+entities:
+- name: User
+  type: User
+  description: A registered, verified Markable developer account.
+  fields: [user_id, name, email, company, website, role, created_at, updated_at, clients]
+  source: https://docs-dev.markable.ai/#get-user-and-client
+- name: Client
+  type: Client
+  description: An API client belonging to a user; carries the credentials exchanged for the
+    client access token used on every Lens call.
+  fields: [client_id, client_secret, user_id, domain, created_at, updated_at]
+  source: https://docs-dev.markable.ai/#client-authentication
+- name: Token
+  type: Token
+  description: An issued access token (user or client scoped).
+  fields: [access_token, user_id, expires_at, created_at, updated_at, deleted_at]
+  source: https://docs-dev.markable.ai/#user-authentication
+- name: Catalog
+  type: Catalog
+  description: A group of visual items that can be indexed and visually searched. Two schemas,
+    `product` and `style`.
+  fields: [_id, _type, name, description, schema, size, access, user, meta, created_at,
+    updated_at]
+  required: [schema, name, user]
+  enums:
+    schema: [product, style]
+    access: [public, private]
+  source: https://docs-dev.markable.ai/#the-catalog-object
+- name: CatalogItem
+  type: CatalogItem
+  description: One indexed item inside a catalog — its images, merchandising data, assigned
+    category and computer-vision indexing status.
+  fields: [_id, _type, catalog, images, data, category, schema, schema_version, status,
+    fingerprint, meta, created_at, updated_at]
+  data_fields: [name, brand, vendor, sku, price, country, url, gender, stock, category]
+  status_note: 'items carry an indexing status (e.g. cv_pending) reflecting the computer-vision
+    pipeline'
+  source: https://docs-dev.markable.ai/#catalog-items
+- name: Image
+  type: Image
+  description: An image attached to a catalog item, with its own ingestion status.
+  fields: [uri, _type, status, error]
+  source: https://docs-dev.markable.ai/#catalog-items
+- name: Category
+  type: Category
+  description: A taxonomy category assigned to a catalog item (e.g. sweaters).
+  fields: [id, name]
+  source: https://docs-dev.markable.ai/#supported-categories
+- name: Attribute
+  type: Attribute
+  description: An attribute assigned to a catalog item after indexing, based on its category
+    (colour, pattern, sleeve length, and others).
+  source: https://docs-dev.markable.ai/#supported-attributes
+relationships:
+- from: User
+  to: Client
+  kind: has_many
+  via: clients
+- from: Client
+  to: User
+  kind: belongs_to
+  via: user_id
+- from: Token
+  to: User
+  kind: belongs_to
+  via: user_id
+- from: Catalog
+  to: User
+  kind: belongs_to
+  via: user
+- from: Catalog
+  to: CatalogItem
+  kind: has_many
+  via: catalogs/:catalogId/items
+- from: CatalogItem
+  to: Catalog
+  kind: belongs_to
+  via: catalog
+- from: CatalogItem
+  to: Image
+  kind: has_many
+  via: images
+- from: CatalogItem
+  to: Category
+  kind: has_one
+  via: category
+- from: CatalogItem
+  to: Attribute
+  kind: has_many
+  via: attributes (assigned during indexing)
+render: null

@@ -1,0 +1,77 @@
+generated: '2026-08-13'
+method: searched
+source: https://docs-dev.markable.ai/
+note: >-
+  Cross-cutting request/response semantics read from the live, first-party Markable Lens API
+  reference. No OpenAPI is published, so nothing here is derived from a spec.
+authentication:
+  style: HTTP Bearer (RFC 6750) — client access token on every Lens call
+  header: Authorization
+  detail: authentication/markable-authentication.yml
+envelope:
+  request: 'every documented request body wraps its payload in a top-level `data` object —
+    e.g. {"data": {"image_uri": "..."}}'
+  response: 'successful responses wrap the payload in a top-level `data` object; failures
+    return a top-level `errors` array'
+  content_type: application/json
+  type_discriminator: objects carry `_type` (e.g. "Catalog", "CatalogItem", "User", "Client",
+    "Token") and `_id`
+idempotency:
+  supported: false
+  header: null
+  note: >-
+    Markable documents no idempotency key, no request-replay contract and no safe-retry
+    guidance. Recorded as an honest absence — no Idempotency pointer is wired in apis.yml.
+pagination:
+  styles:
+  - surface: catalog list / catalog item list
+    style: offset
+    params:
+    - name: limit
+      description: number of items to return (default 50 for catalogs, 20 for catalog items)
+    - name: skip
+      description: number of items to skip
+  - surface: video search
+    style: page-number
+    params:
+    - name: page
+      description: zero-based page index (query parameter)
+    - name: pageLimit
+      description: results per page (query parameter)
+  consistency_note: >-
+    The two surfaces use different pagination vocabularies (limit/skip vs page/pageLimit),
+    which an agent must special-case per endpoint.
+  response_fields: []
+field_expansion:
+  supported: false
+metadata:
+  supported: true
+  detail: objects define an optional `meta` object ("Meta data for model"); error objects
+    carry `meta.timestamp` and `meta.datetime`
+request_tracing:
+  header: null
+  note: no request-id header is documented; error objects carry a per-occurrence `id`
+versioning:
+  scheme: none-implemented
+  current: null
+  quote: >-
+    "Currently the API is in private beta and the versioning process is not being implemented,
+    but as soon as we move into public beta the versioning will be in place."
+  source: https://docs-dev.markable.ai/#versioning
+  detail: lifecycle/markable-lifecycle.yml
+rate_limit_signaling:
+  documented_limit: 25 requests/minute per client
+  headers: []
+  exhaustion_status: 429
+  detail: rate-limits/markable-rate-limits.yml
+errors:
+  format: jsonapi
+  detail: errors/markable-problem-types.yml
+hosts:
+- host: auth.markable.ai
+  role: authentication (user + client token issuance)
+- host: catalog.markable.ai
+  role: catalogs, catalog items, image/style search, taxonomy
+- host: video.markable.ai
+  role: video search
+  note: documented over http:// in the video examples, https:// elsewhere

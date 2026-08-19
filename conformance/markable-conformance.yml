@@ -1,0 +1,48 @@
+generated: '2026-08-13'
+method: searched
+source: https://docs-dev.markable.ai/
+note: >-
+  Standards posture read from the published Markable Lens API reference. Markable publishes no
+  OpenAPI, no compliance program and no certifications, so no `Compliance` pointer is wired in
+  apis.yml.
+standards:
+- id: jsonapi-errors
+  conforms: true
+  evidence: 'the error reference states failed requests return a list of error objects
+    "according to the JSON API Specification" (jsonapi.org/format/#errors) with title/id/status/
+    code/detail/links/source/meta members'
+  source: https://docs-dev.markable.ai/#errors
+- id: rfc6750-bearer
+  conforms: true
+  evidence: the docs cite HTTP Bearer Token (RFC 6750) as the Authorization header format for
+    both user and client access tokens
+  source: https://docs-dev.markable.ai/#authentication
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: errors are JSON:API shaped, not application/problem+json
+- id: oauth2
+  conforms: false
+  evidence: 'token exchange is a vendor-specific endpoint (POST /auth/client/authorize) rather
+    than RFC 6749; no /.well-known/oauth-authorization-server (404 on every host probed
+    2026-08-13)'
+- id: oidc
+  conforms: false
+  evidence: /.well-known/openid-configuration returns 404 on every Markable host probed
+- id: openapi
+  conforms: false
+  evidence: no OpenAPI/Swagger document published — contract discovery on the docs host, the
+    website, app-prod.markable.ai and catalog.markable.ai all missed (2026-08-13)
+- id: asyncapi
+  conforms: false
+  evidence: no event, streaming or webhook surface is documented
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: /.well-known/security.txt returns 404 on every Markable host probed
+- id: rfc8594-sunset
+  conforms: false
+  evidence: no deprecation policy or Sunset/Deprecation header support is documented
+compliance:
+  published: false
+  certifications: []
+  note: no trust center, SOC 2/ISO 27001/PCI/HIPAA/FedRAMP claim, or compliance page was found
+    on markable.ai (probed 2026-08-13)

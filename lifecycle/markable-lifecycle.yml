@@ -1,0 +1,61 @@
+generated: '2026-08-13'
+method: searched
+source: https://docs-dev.markable.ai/#versioning
+versioning:
+  scheme: none-implemented
+  current: null
+  docs: https://docs-dev.markable.ai/#versioning
+  quote: >-
+    "Currently the API is in private beta and the versioning process is not being implemented,
+    but as soon as we move into public beta the versioning will be in place."
+  stability: 'private beta — the introduction also states "This API and documentation is
+    subject to modifications."'
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: no deprecation policy, no RFC 8594 Sunset/Deprecation header support is documented
+sla:
+  url: null
+  uptime_target: null
+status_page: null
+deprecated_operations: []
+runtime_health:
+  checked: '2026-08-13'
+  summary: >-
+    The Markable Lens API reference is live and public, but the API hosts it documents are not
+    currently serving. This is recorded as observed evidence, not as an assertion that the
+    product has been formally retired — Markable has published no retirement notice.
+  probes:
+  - host: docs-dev.markable.ai
+    url: https://docs-dev.markable.ai/
+    status: 200
+    finding: live Slate documentation site, "Markable Lens API Docs - for Developers"
+  - host: docs.markable.ai
+    url: https://docs.markable.ai/
+    status: 404
+    finding: dangling GitHub Pages CNAME — "There isn't a GitHub Pages site here"
+  - host: auth.markable.ai
+    url: https://auth.markable.ai/auth/users
+    status: null
+    finding: DNS does not resolve (NXDOMAIN)
+  - host: video.markable.ai
+    url: https://video.markable.ai/video/search
+    status: null
+    finding: DNS does not resolve (NXDOMAIN)
+  - host: catalog.markable.ai
+    url: https://catalog.markable.ai/catalogs
+    status: 404
+    finding: >-
+      resolves to 52.198.61.73 and answers 404 from nginx behind an unrouted Kubernetes ingress
+      presenting the default "Kubernetes Ingress Controller Fake Certificate" (O=Acme Co), so
+      TLS fails verification and no documented path is routed
+  - host: markable.ai
+    url: https://markable.ai/signup
+    status: 404
+    finding: the developer signup link published in the Getting Started guide is dead
+company_pivot:
+  note: >-
+    markable.ai today markets an affiliate/creator monetization product (deeplinks, shop-in-bio,
+    Instagram auto-DM, AI collages) with no developer program. The Lens visual-search API
+    documented above is the earlier product; its docs repository was last pushed 2021-05-28.
+  source: https://github.com/markable-dev/markable-api-docs
