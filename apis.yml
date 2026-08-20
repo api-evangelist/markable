@@ -43,6 +43,19 @@ tags:
 - Social Commerce
 - Influencer Marketing
 - Content Monetization
+- Social-Media
+- Visual Search
+- Computer-Vision
+- Product Discovery
+- Image Recognition
+- Video Search
+tags_raw:
+- Company
+- Creator Economy
+- Affiliate Marketing
+- Social Commerce
+- Influencer Marketing
+- Content Monetization
 - Social Media
 - Visual Search
 - Computer Vision
@@ -62,6 +75,12 @@ apis:
   humanURL: https://docs-dev.markable.ai/
   baseURL: https://catalog.markable.ai
   tags:
+  - Visual Search
+  - Computer-Vision
+  - Image Recognition
+  - Video Search
+  - Product Discovery
+  tags_raw:
   - Visual Search
   - Computer Vision
   - Image Recognition
