@@ -47,6 +47,10 @@ x-tier-reason: portfolio-lead
 specificationVersion: '0.23'
 created: '2026-07-17'
 modified: '2026-08-13'
+x-docs-platform: slate
+x-docs-platform-confidence: medium
+x-docs-platform-checked: 2026-10-03
+x-docs-hosting: github-pages
 tags:
 - Company
 - Creator Economy
@@ -54,9 +58,9 @@ tags:
 - Social Commerce
 - Influencer Marketing
 - Content Monetization
-- Social-Media
+- Social Media
 - Visual Search
-- Computer-Vision
+- Computer Vision
 - Product Discovery
 - Image Recognition
 - Video Search
@@ -73,6 +77,8 @@ tags_raw:
 - Product Discovery
 - Image Recognition
 - Video Search
+- Social-Media
+- Computer-Vision
 apis:
 - name: Markable Lens API
   description: 'Markable''s visual search platform API. Index catalogs of products or
@@ -87,7 +93,7 @@ apis:
   baseURL: https://catalog.markable.ai
   tags:
   - Visual Search
-  - Computer-Vision
+  - Computer Vision
   - Image Recognition
   - Video Search
   - Product Discovery
@@ -97,6 +103,7 @@ apis:
   - Image Recognition
   - Video Search
   - Product Discovery
+  - Computer-Vision
   x-status: documented-runtime-unreachable
   x-status-checked: '2026-08-13'
   x-additional-hosts:
