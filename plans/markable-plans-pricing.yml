@@ -85,3 +85,46 @@ api_pricing:
     this API you will need to be a verified developer, please contact us to get started." No
     metered or tiered API price is published.'
   source: https://docs-dev.markable.ai/#getting-started
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  - subscription
+  units: []
+  plans:
+  - name: Starter
+    access: other
+    model: free
+    model_how: derived
+    units: []
+    periods:
+    - month
+  - name: Grow
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods:
+    - month
+  - name: Pro
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods:
+    - month
+  - name: VIP
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods:
+    - month
+  - name: Boosting Special
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods:
+    - month
