@@ -64,6 +64,104 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Markable is a company surfaced as a portfolio company of partech and added to the API Evangelist network as a stub for enrichment. Sector: Marketplace. This profile is a lead awaiting the enrichment pipeline.
+Markable (markable.ai) is an all-in-one monetization platform for affiliate creators and social-commerce influencers. It turns social posts into revenue with smart affiliate deeplinks across Amazon, Target, and Walmart, a shop-in-bio storefront, storefront sync for product collections, Instagram auto-DM replies, AI-generated collages and captions, viral-product discovery, and performance analytics. It is offered as an iOS app and a desktop web app, with a creator performance/boosting program. Markable is backed by Partech. Markable also published an earlier developer product, the Markable Lens API — a visual search platform for finding products and styles inside images and video against indexed catalogs — whose reference is still publicly served at docs-dev.markable.ai. Access to that API is gated on manual developer verification, no machine-readable contract (OpenAPI/AsyncAPI/GraphQL/MCP) is published, and the API hosts it documents were not reachable when last probed.
 
-Backed by: partech — https://www.markable.ai/
+**Areas:** Company · Creator Economy · Affiliate Marketing · Social Commerce · Influencer Marketing · Content Monetization · Social Media · Visual Search · Computer Vision · Product Discovery · Image Recognition · Video Search
+
+## Markable on APIs.io
+
+Everything profiled for Markable is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/markable/](https://apis.io/providers/markable/)** — or go straight to one of the APIs or properties below.
+
+### APIs (1)
+
+- [Markable Lens API](https://apis.io/apis/markable/markable-lens-api/) — Markable's visual search platform API. Index catalogs of products or styles, then search for visually similar items inside images and video. Covers catalog…
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Markable Authentication](https://apis.io/security/markable/markable-authentication/)
+- [Markable Domain Security](https://apis.io/security/markable/markable-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Markable Plans Pricing](https://apis.io/plans/markable/markable-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Markable Rate Limits](https://apis.io/rate-limits/markable/markable-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.markable.ai/)
+- [Documentation](https://docs-dev.markable.ai/)
+- [Getting started](https://docs-dev.markable.ai/#getting-started)
+- [API reference](https://docs-dev.markable.ai/)
+- [Pricing](https://www.markable.ai/pricing)
+- [Sign up](https://app-prod.markable.ai/)
+- [Support](https://intercom.help/markable-ai/en)
+- [Privacy policy](https://www.markable.ai/privacy)
+- [GitHub](https://github.com/markable-dev)
+
+## API Evangelist rating
+
+**Kin Score 33.5** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 0.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 23.7 |
+| Developer ergonomics | 39.3 |
+| Access clarity | 65.8 |
+
+**Agent readiness 7.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 19.1** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/markable/](https://apis.io/providers/markable/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Markable: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/markable/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
